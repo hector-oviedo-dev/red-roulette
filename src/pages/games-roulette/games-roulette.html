@@ -1,0 +1,72 @@
+<div class="spinContainer" [hidden]="!SPINNER">
+  <div class="spinBG"></div>
+  <div class="spin">
+    <ion-spinner name="bubbles" text-center></ion-spinner>
+  </div>
+</div>
+
+
+<ion-scroll #scrollContainer
+direction="xy"
+scrollX="false"
+scrollY="false"
+overflow-scroll="false">
+    <canvas #canvas
+    (touchmove)="onTouchMove($event);"
+    (touchstart)="onTouchDown($event);"
+    (touchend)="onTouchUp($event);"
+    (mousemove)="onMouseMove($event);"
+    (mouseup)="onMouseUp($event);"
+    (mousedown)="onMouseDown($event);"
+    width="1280" height="572"></canvas>
+</ion-scroll>
+
+<div #timerContainer class="timerContainer">
+  <div #timerBarContainer class="timerBarContainer" [style.width.%]="ACTUAL_TIME">
+  </div>
+</div>
+
+<div #btnsContainer class="rightContainer">
+   <img #btnBet src="assets/images/btnbet.png" />
+   <img #btnUnbet src="assets/images/btnunbet.png" />
+   <img #btnClearbet src="assets/images/btnclearbet.png" (click)="clearBet();" />
+   <canvas #btnBetModuleCanvas (click)="changeModule();" width="68" height="66"></canvas>
+</div>
+
+<div class="videoContainer" width="100%" [hidden]="!VIDEO_POPUP">
+  <div class="titleContainer">
+      <div class="row header">
+        <div class="col" style="text-align:left;"><b>{{ACTUAL_STATE}}</b></div>
+        <div class="col">MANO: {{ACTUAL_MANO}}</div>
+        <div class="col">CREDITOS: {{CREDITS_TMP}}</div>
+        <div class="col">APUESTA: {{CREDITS - CREDITS_TMP}}</div>
+        <div class="col">COBRA: {{COBRA}}</div>
+      </div>
+  </div>
+  <div class="centerer">
+    <div #media class="mediaContainer" [hidden]="!VIDEO_SHOWING">
+      <canvas #mediaCanvas width="100%" height="100%"></canvas>
+    </div>
+    <!--<div #media class="mediaContainer" [hidden]="!VIDEO_SHOWING">
+      <div class="jsmpeg" data-progressive="false" data-url="ws://glacial-headland-83145.herokuapp.com/"></div>
+    </div>-->
+
+    <!--<iframe  [src]="videoUrl" frameborder="0" #media width="100%" height="85%" style="text-align:center;" [hidden]="!VIDEO_SHOWING"></iframe>-->
+
+    <!--<video [vgMedia]="media" id="singleVideo" preload="auto" #media width="100%" height="85%" style="text-align:center;" [hidden]="!VIDEO_SHOWING">
+      <source src="http://callmenick.com/_development/html5-video/media/demo.mp4" type="video/mp4;"/>
+    </video>-->
+  </div>
+
+  <div class="numberContainer" #numberContainer [hidden]="RESULT_HIDDEN"><h1 class="numberContent">{{ACTUAL_RESULT}}</h1></div>
+</div>
+
+<div #creditsContainer class="leftContainer">
+  <div><img #btnVideo src="assets/images/btnexit.png" (click)="onBackClick()"/></div>
+  <div><img #btnVideo src="assets/images/btnvideo.png" (click)="videoClick()"/></div>
+  <div class="creditsContainer" (click)="moveCreditsPopup();">
+    <div style="position:absolute;left:113px;bottom:47px">{{CREDITS_TMP}}</div>
+    <div style="position:absolute;left:113px;bottom:24px">{{CREDITS - CREDITS_TMP}}</div>
+    <div style="position:absolute;left:113px;bottom:2px">{{COBRA}}</div>
+  </div>
+</div>
