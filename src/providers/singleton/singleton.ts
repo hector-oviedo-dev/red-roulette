@@ -13,17 +13,20 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class SingletonProvider {
 
-  public SERVICE:string = "http://red-manager.cloudno.de/api/";
-  //public SERVICE:string = "http://localhost:8080/api/";
+  public SERVICE:string = "http://daneri-manager.cloudno.de/api/";
+  //public SERVICE:string = "http://red-manager.cloudno.de/api/";
+  //public SERVICE:string = "http://10.10.2.161:8090/api/";
 
   public SERVICE_TICKETS:string = this.SERVICE + "getticket";
   public SERVICE_CREDITS:string = this.SERVICE + "getcredits";
   public SERVICE_PLAY:string = this.SERVICE + "resolveplay";
   public SERVICE_LOGIN:string = this.SERVICE + "login";
+  public SERVICE_LOGIN_IMAGE:string = this.SERVICE + "loginimage";
+  public SERVICE_SIGNIN_IMAGE:string = this.SERVICE + "signinimage";
 
   private CREDITS = 0;
 
-  private UID = "WEB";
+  private UID = "RED";
   private PASS = "123";
 
   private _events: Events;
@@ -89,5 +92,27 @@ export class SingletonProvider {
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
     return this._http.post(this.SERVICE_LOGIN, body.toString(),{ headers:headers });
+  }
+  public doLoginImage(dni,imageId) {
+    var body = new URLSearchParams("");
+    body.set('dni', dni);
+    body.set('imageid', imageId);
+
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+
+    return this._http.post(this.SERVICE_LOGIN_IMAGE, body.toString(),{ headers:headers });
+  }
+  public doSignInImage(dni,imageId) {
+    var body = new URLSearchParams("");
+    body.set('uid', dni);
+    //body.set('uid', this.UID);
+    body.set('dni', dni);
+    body.set('imageid', imageId);
+
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+
+    return this._http.post(this.SERVICE_SIGNIN_IMAGE, body.toString(),{ headers:headers });
   }
 }

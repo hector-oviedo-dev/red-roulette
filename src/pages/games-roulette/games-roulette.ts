@@ -81,7 +81,7 @@ export class GamesRoulettePage {
 
     public SPINNER = true;
     constructor(private service:SocketlistenerProvider, public events: Events, private renderer : Renderer, private nav:NavController, private singleton:SingletonProvider,private nativeAudio: NativeAudio) {
-
+      
      }
      public onCredits(msg) {
        this.CREDITS = msg;

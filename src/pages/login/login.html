@@ -1,0 +1,12 @@
+<ion-content padding>
+  <ion-list>
+    <ion-item><p>{{RESULT}}</p></ion-item>
+    <ion-item *ngIf="(!valid)"><ion-input placeholder="Ingresar DNI" [(ngModel)]="DNI"></ion-input></ion-item>
+    <ion-item *ngIf="(!valid)"><button ion-button (click)="onClick()">Ingresar con Foto</button></ion-item>
+    <ion-item *ngIf="(!valid)"><label>No tenes cuenta? Ingresa tu DNI y crea una</label></ion-item>
+    <ion-item *ngIf="(!valid && (DNI.length ==8))"><button ion-button (click)="onCreateClick()">Crear Cuenta</button></ion-item>
+    <ion-item *ngIf="(valid)"><p>BIENVENIDO!</p></ion-item>
+    <ion-item *ngIf="(valid)"><button ion-button (click)="onGameClick()">Ingresar a Ruleta</button></ion-item>
+  </ion-list>
+</ion-content>
+

@@ -3,13 +3,13 @@ import { Events } from 'ionic-angular';
 
 @Injectable()
 export class SocketlistenerProvider {
-  public WS_URL:string = "ws://localhost:8080";
+  //public WS_URL:string = "ws://localhost:8080";
 
   //public WS_URL:string = "ws://nodejs-mongo-persistent-nodemongo8.193b.starter-ca-central-1.openshiftapps.com";
   //public WS_URL:string = "ws://nodechat2-nodechat2.1d35.starter-us-east-1.openshiftapps.com";
   //public WS_URL:string = "ws://nodechat2-nodechat2.1d35.starter-us-east-1.openshiftapps.com/ws";
   //public WS_URL:string = "ws://red-stream.herokuapp.com/ws";
-  //public WS_URL:string = "ws://nodechat2.cloudno.de/ws";
+  public WS_URL:string = "ws://red-stream.cloudno.de/ws";
   
 
   private ws:WebSocket;

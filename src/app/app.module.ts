@@ -6,10 +6,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { NativeAudio } from '@ionic-native/native-audio';
+import { Camera } from '@ionic-native/camera';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { GamesRoulettePage } from '../pages/games-roulette/games-roulette';
+import { LoginPage } from '../pages/login/login';
 import { SingletonProvider } from '../providers/singleton/singleton';
 import { SocketlistenerProvider } from '../providers/socketlistener/socketlistener';
 
@@ -17,6 +19,7 @@ import { SocketlistenerProvider } from '../providers/socketlistener/socketlisten
   declarations: [
     MyApp,
     GamesRoulettePage,
+    LoginPage,
     HomePage
   ],
   imports: [
@@ -28,12 +31,14 @@ import { SocketlistenerProvider } from '../providers/socketlistener/socketlisten
   entryComponents: [
     MyApp,
     GamesRoulettePage,
+    LoginPage,
     HomePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     NativeAudio,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SingletonProvider,
     SocketlistenerProvider
