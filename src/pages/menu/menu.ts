@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { GamesRoulettePage } from '../../pages/games-roulette/games-roulette';
+import { AddcreditsPage } from '../../pages/addcredits/addcredits';
 import { SingletonProvider } from '../../providers/singleton/singleton';
 
 /**
@@ -43,6 +44,9 @@ export class MenuPage {
   }
   public onGameClick(e) {
     this.navCtrl.push(GamesRoulettePage);
+  }
+  public onTicketClick(e) {
+    this.navCtrl.push(AddcreditsPage);
   }
 
 }

@@ -1,0 +1,28 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>VOLVER</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+<div class="row header">
+  <div class="col" style="text-align:center;">
+    <h4><b>Cargar creditos promocionales</b></h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col" style="text-align:center;">
+    <h4><b>{{TXT_STATUS}}</b></h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col" style="text-align:center;">
+    <button ion-button full (click)="startScan();">Desde camara</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col" style="text-align:center;">
+    <button ion-button full (click)="startBarcode();">Desde archivo</button>
+  </div>
+</div>
+</ion-content>

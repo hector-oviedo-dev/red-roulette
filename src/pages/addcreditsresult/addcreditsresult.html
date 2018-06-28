@@ -1,0 +1,24 @@
+<div class="spin" [hidden]="!SPINNER">
+  <ion-spinner name="bubbles" text-center></ion-spinner>
+</div>
+
+<!--
+  Generated template for the ScannerresponsePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-content padding [hidden]="SPINNER">
+  <div class="row">
+    <div class="col">
+      <h4 style="text-align:right;">RESULTADO:</h4>
+    </div>
+    <div class="col">
+      <h4>{{TXT_STATUS}}</h4>
+    </div>
+  </div>
+  <div class="row">
+    <button type="button" name="button"  ion-button full  (click)="onConfirm();">ACEPTAR</button>
+  </div>
+</ion-content>
