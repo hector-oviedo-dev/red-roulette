@@ -1,0 +1,56 @@
+<ion-header>
+        <ion-navbar>
+          <ion-title>
+            Volver Al Menu Principal
+          </ion-title>
+        </ion-navbar>
+      </ion-header>
+
+<ion-content padding>
+    <form [formGroup]="myForm">
+      <ion-list>
+        <ion-item>
+            <ion-label floating>Apellido</ion-label>
+            <ion-input formControlName="lastName"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!myForm.controls.lastName.valid  && (myForm.controls.lastName.dirty || submitAttempt)">
+            <p style="color:red">Ingrese un Apellido valido.</p>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Nombre</ion-label>
+            <ion-input formControlName="firstName"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!myForm.controls.firstName.valid  && (myForm.controls.firstName.dirty || submitAttempt)">
+            <p style="color:red">Ingrese un Nombre valido.</p>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Fecha de Nacimiento</ion-label>
+            <ion-datetime displayFormat="MM/DD/YYYY" formControlName="birthDate"></ion-datetime>
+        </ion-item>
+        <ion-item *ngIf="!myForm.controls.birthDate.valid  && (myForm.controls.birthDate.dirty || submitAttempt)">
+            <p style="color:red">Ingrese una fecha de nacimiento valida.</p>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>DNI</ion-label>
+            <ion-input formControlName="DNI"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!myForm.controls.DNI.valid  && (myForm.controls.DNI.dirty || submitAttempt)">
+            <p style="color:red">Ingrese un DNI valido.</p>
+        </ion-item>
+        
+        <br>
+
+        <ion-item><ion-input placeholder="Telefono" formControlName="phone"></ion-input></ion-item>
+        <ion-item><ion-input placeholder="E-Mail" formControlName="email"></ion-input></ion-item>
+
+        <ion-item><button ion-button full large (click)="onCreateClick()">Crear Cuenta</button></ion-item>
+
+        <ion-item><p>{{RESULT}}</p></ion-item>
+      </ion-list>
+    </form>
+  </ion-content>
+  
+  

@@ -13,6 +13,8 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class SingletonProvider {
 
+  public STREAM_URL;
+
   public SERVICE:string = "http://daneri-manager.cloudno.de/api/";
   //public SERVICE:string = "http://red-manager.cloudno.de/api/";
   //public SERVICE:string = "http://10.10.2.161:8090/api/";

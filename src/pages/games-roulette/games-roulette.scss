@@ -80,15 +80,16 @@ ion-scroll {
   min-height: 480px;
   width:100%;
   height:480px;
-  clip-path: ellipse(278px 163px at 50% 163px);
+  //clip-path: ellipse(278px 163px at 50% 163px);
 }
 .centerer {
   left:500px;
   width:100%;
+  height: 100%;
 
-  background-color: #111111;
+  background-color: rgba(0,0,0,0.8);
   //background-color: #826136;
-  clip-path: ellipse(288px 164px at 50% 174px);
+  //clip-path: ellipse(288px 164px at 50% 174px);
 }
 
 .timerContainer {

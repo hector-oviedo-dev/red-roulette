@@ -5,7 +5,7 @@ import { SocketlistenerProvider } from '../../providers/socketlistener/socketlis
 import { SingletonProvider } from '../../providers/singleton/singleton';
 import { Events } from 'ionic-angular';
 
-import { HomePage } from '../home/home';
+import { MenuPage } from '../menu/menu';
 
 declare var JSMpeg:any;
 
@@ -81,7 +81,7 @@ export class GamesRoulettePage {
 
     public SPINNER = true;
     constructor(private service:SocketlistenerProvider, public events: Events, private renderer : Renderer, private nav:NavController, private singleton:SingletonProvider,private nativeAudio: NativeAudio) {
-      
+      //this.singleton.STREAM_URL = 'ws://10.10.2.137:8080';
      }
      public onCredits(msg) {
        this.CREDITS = msg;
@@ -108,13 +108,13 @@ export class GamesRoulettePage {
 
         //set up and play video
         let canvas = this.mediaCanvas.nativeElement;
-        this.url = 'ws://red-stream.herokuapp.com/';
-        this.player = new JSMpeg.Player(this.url, {canvas: canvas,progressive:true,chunkSize:0,videoBufferSize:0});
+        this.url = this.singleton.STREAM_URL;
+        this.player = new JSMpeg.Player(this.url, {canvas: canvas,progressive:0,chunkSize:0,videoBufferSize:0});
 
         //websocket (roulette server)
         this.service.connect();
 
-      } else this.nav.push(HomePage);
+      } else this.nav.push(MenuPage);
     }
     ngOnInit() {
       this.context = this.canvas.nativeElement.getContext("2d");
@@ -138,7 +138,7 @@ export class GamesRoulettePage {
       //console.log("scrolling" + e);
     }
     public onBackClick() {
-      if (!this.BLOCKING) {
+      //if (!this.BLOCKING) {
         this.events.unsubscribe('oncredits');
         this.events.unsubscribe('onmessage');
         this.service.disconnect();
@@ -148,8 +148,8 @@ export class GamesRoulettePage {
         this.player.stop();
         this.player.destroy();
 
-        this.nav.push(HomePage);
-      }
+        this.nav.push(MenuPage);
+      //}
     }
     public enterFrame() {
      if (this.ACTUAL_MANO != undefined) this.SPINNER = false;
@@ -181,7 +181,7 @@ export class GamesRoulettePage {
      //Parser de WebSocket (estados de ruleta)//
      ///////////////////////////////////////////
      private onMessage(msg:string) {
-       console.log(msg)
+       //console.log(msg)
        if (msg == "ping" || this.PAYMENT_ANIMATION || msg == "onwsconnect" || msg == "onwsdisconnect" || !msg || msg == "" || msg == "undefined" || msg == "null" || msg == null) return;
 
        let result = JSON.parse(msg);
@@ -371,7 +371,7 @@ export class GamesRoulettePage {
           "bets":JSON.stringify(this.PAYMENT_BETS)
         };
 
-        console.log(JSON.stringify(this.PAYMENT_BETS));
+        //console.log(JSON.stringify(this.PAYMENT_BETS));
 
         this.singleton.doResolvePlay(data).subscribe(res => { this.onServiceResult(res); });
       } else {
@@ -379,7 +379,7 @@ export class GamesRoulettePage {
        }
     }
     public onServiceResult(res) {
-      console.log("respuesta: " + res._body);
+      //console.log("respuesta: " + res._body);
 
       var result = JSON.parse(res._body);
       if (result.status == "ok") {
@@ -397,7 +397,7 @@ export class GamesRoulettePage {
         }
       } else {
         this.clearBet();
-        this.nav.push(HomePage);
+        this.nav.push(MenuPage);
       }
     }
     //////////////////////
@@ -483,7 +483,7 @@ export class GamesRoulettePage {
     public VIDEO_POPUP = false;
 
     public videoClick() {
-      if (this.BLOCKING) return;
+      //if (this.BLOCKING) return;
 
       if (this.VIDEO_SHOWING) this.VIDEO_SHOWING = false;
       else this.VIDEO_SHOWING = true;
@@ -491,10 +491,10 @@ export class GamesRoulettePage {
       this.processVideoPopup();
     }
     public processVideoPopup() {
-      if (!this.BLOCKING) {
+      //if (!this.BLOCKING) {
         if (this.VIDEO_SHOWING) this.VIDEO_POPUP = true;
         else this.VIDEO_POPUP = false;
-      } else this.VIDEO_POPUP = true;
+      //} else this.VIDEO_POPUP = true;
     }
 
     //Popup contenedor de menu derecho

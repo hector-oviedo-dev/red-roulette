@@ -1,12 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Volver Al Menu Principal
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
 <ion-content padding>
+  <br>
+  <h3 text-center>Ingresar</h3>
   <ion-list>
+    
+    <ion-item>
+      <ion-label floating>Ingresar DNI</ion-label>
+      <ion-input [(ngModel)]="DNI"></ion-input>
+    </ion-item>
+    <ion-item><button ion-button full large (click)="onClick()">Ingresar</button></ion-item>
     <ion-item><p>{{RESULT}}</p></ion-item>
-    <ion-item *ngIf="(!valid)"><ion-input placeholder="Ingresar DNI" [(ngModel)]="DNI"></ion-input></ion-item>
-    <ion-item *ngIf="(!valid)"><button ion-button (click)="onClick()">Ingresar con Foto</button></ion-item>
-    <ion-item *ngIf="(!valid)"><label>No tenes cuenta? Ingresa tu DNI y crea una</label></ion-item>
-    <ion-item *ngIf="(!valid && (DNI.length ==8))"><button ion-button (click)="onCreateClick()">Crear Cuenta</button></ion-item>
-    <ion-item *ngIf="(valid)"><p>BIENVENIDO!</p></ion-item>
-    <ion-item *ngIf="(valid)"><button ion-button (click)="onGameClick()">Ingresar a Ruleta</button></ion-item>
   </ion-list>
 </ion-content>
 
